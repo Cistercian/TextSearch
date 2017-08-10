@@ -1,4 +1,4 @@
-package main.ru.hd.olaf.finder.Strategy;
+package main.java.ru.hd.olaf.finder.Strategy;
 
 /**
  * Created by d.v.hozyashev on 10.08.2017.
