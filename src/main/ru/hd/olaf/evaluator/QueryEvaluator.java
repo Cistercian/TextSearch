@@ -1,8 +1,9 @@
-package ru.hd.olaf.main.evaluator;
+package main.ru.hd.olaf.evaluator;
 
-import ru.hd.olaf.main.finder.StringFinder;
-import ru.hd.olaf.main.util.OperationType;
+import main.ru.hd.olaf.finder.StringFinder;
+import main.ru.hd.olaf.util.OperationType;
 
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 /**
@@ -11,11 +12,11 @@ import java.util.Stack;
  * Класс, осуществляющий выполнение логического условия поиска текста
  */
 public class QueryEvaluator {
-
     //стек с булевыми параметрами
     private static final Stack<Boolean> values = new Stack<>();
     //стек с логическими операторами (NOT, AND, OR)
     private static final Stack<OperationType> operators = new Stack<>();
+
 
     /**
      * Главная функция - выполнение условия
@@ -47,7 +48,7 @@ public class QueryEvaluator {
                 isNextWordIsOperator = true;
             } else if (isOperator(word)) {
                 //считали оператор
-                OperationType operator = OperationType.valueOf(word);
+                OperationType operator = OperationType.getOperation(word);
 
                 //случай с использованием скобок
                 if (operator == OperationType.OPEN_BRACKET) {
@@ -61,8 +62,12 @@ public class QueryEvaluator {
                 } else if (operator == OperationType.CLOSE_BRACKET) {
                     //считали закрывающуюся скобку - необходимо выполнить все имеющиеся операции в стеке
                     //до открывающейся скобки
-                    while (operators.peek() != OperationType.OPEN_BRACKET) {
-                        evaluate(values, operators.pop());
+                    try {
+                        while (operators.peek() != OperationType.OPEN_BRACKET) {
+                            evaluate(values, operators.pop());
+                        }
+                    } catch (EmptyStackException e) {
+                        throw new IllegalArgumentException("Логическая ошибка парсинга условия - не найдена открывающая скобка");
                     }
                     //убираем из стека открывающуюся скобку и переходим к следующему слову
                     operators.pop();
@@ -89,7 +94,6 @@ public class QueryEvaluator {
         while (!operators.isEmpty()) {
             evaluate(values, operators.pop());
         }
-
 
         if (values.size() != 1)
             throw new IllegalArgumentException("Что-то пошло не так - нет итогового определенного результата");
@@ -121,6 +125,9 @@ public class QueryEvaluator {
      * @param operator текущая проверяемая операция (NOT/AND/OR)
      */
     private static void evaluate(Stack<Boolean> values, OperationType operator) {
+        if (values == null || values.size() == 0)
+            throw new IllegalArgumentException("Логическая ошибка проверки условий - нет переменных для обработки");
+
         Boolean result = null;
 
         if (operator == OperationType.NOT) {
@@ -128,16 +135,20 @@ public class QueryEvaluator {
             result = !values.pop();
         } else {
             //логическая операция AND или OR - сравниваем 2 последний параметра в стеке
-            Boolean valueLast = values.pop();
-            Boolean valuePrevious = values.pop();
+            try {
+                Boolean valueLast = values.pop();
+                Boolean valuePrevious = values.pop();
 
-            switch (operator) {
-                case AND:
-                    result = valueLast && valuePrevious;
-                    break;
-                case OR:
-                    result = valueLast || valuePrevious;
-                    break;
+                switch (operator) {
+                    case AND:
+                        result = valueLast && valuePrevious;
+                        break;
+                    case OR:
+                        result = valueLast || valuePrevious;
+                        break;
+                }
+            } catch (EmptyStackException e) {
+                throw new IllegalArgumentException("Логическая ошибка - невозможно проверить бинарное условие при отсутствии второго операнда");
             }
         }
 
@@ -165,7 +176,7 @@ public class QueryEvaluator {
      */
     private static boolean isOperator(String text) {
         try {
-            OperationType.valueOf(text);
+            OperationType.getOperation(text);
         } catch (IllegalArgumentException e) {
             return false;
         }

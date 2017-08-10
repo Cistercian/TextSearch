@@ -1,4 +1,4 @@
-package ru.hd.olaf.main.util;
+package main.ru.hd.olaf.util;
 
 import java.util.Stack;
 

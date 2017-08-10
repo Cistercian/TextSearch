@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mvideo_xml SYSTEM "http://api.mvideo.ru/api/mobile/v03/public/category.dtd">
+<mvideo_xml date="2011-10-24T12:07:44+04:00">
+<parent_category>
+<category_id>11001200000</category_id>
+<category_name>MP3 плееры</category_name>
+</parent_category>
+<params>
+ямаха
+<param param_name="mark" title="Производители" current_value="0">
+<option value="0" count="9">Все производители</option>
+<option value="877" count="16">Explay</option>
+<option value="498" count="7">Rover</option>
+<option value="668" count="2">iRiver</option>
+<option value="1008" count="13">Ritmix</option>
+<option value="925" count="19">teXet</option>
+<option value="636" count="2">Archos</option>
+<option value="13" count="15">Samsung</option>
+<option value="11" count="17">Philips</option>
+<option value="1" count="41">Sony</option>
+</param>
+<param param_name="grid" title="Группы" current_value="0">
+<option value="0" count="1">Все группы</option>
+<option value="1029" count="132">MP3 плеер  flash</option>
+</param>
+</params>
+<products category_id="11001201029" category_name="MP3 плеер  flash">
+<product>
+<product_id>30013810</product_id>
+<title>Портативный медиаплеер Explay X1 4Gb White/blue</title>
+<description>Компактный и стильный!
+
+- Корпус без дисплея
+- Навигационная клавиша Навипад
+- Встроенная память объемом 4 Гб
+- Длительное время работы от батареи
+- Клипса для фиксации на одежде</description>
+<rating>5</rating>
+<reviews_num>2</reviews_num>
+<inet_price>590</inet_price>
+<old_price>590</old_price>
+<price>590</price>
+<card_discount>1</card_discount>
+<pickup>0</pickup>
+<delivery>0</delivery>
+<image width="180" height="180">http://www.mvideo.ru/Pdb/30013810.jpg</image>
+</product>
+<product>
+<product_id>30012771</product_id>
+<title>Портативный медиаплеер Rover Aria C35 Black</title>
+<description>RoverMedia Aria C35 – компактный современный медиа-плеер, поддерживающий MP3, WMA, WAV форматы и сочетающий в себе функциональность и современный дизайн.
+
+Плеер обладает достойной функциональностью: воспроизводит файлы форматов MP3, WMA и WAV, оснащен встроенным FM-тюнером.
+
+Питание от батареи ААА даст вам возможность не быть привязанным к розетке для подзарядки. 7 цветов подсветки позволят одним нажатием подстроиться плееру под ваше настроение.
+
+Для подключения к компьютеру используется встроенный USB 2.0 разъем, что снимает необходимость в проводах.
+
+Функции:
+
+- Воспроизведение аудио форматов: MP3, WMA
+- 6 режимов настроек эквалайзера
+- Цифровая голосовая запись
+- FM-тюнер
+- Возможность использовать в качестве накопителя ( «флешки»)
+- Питание от батарейки типа ААА 1.5В
+- Поддерживается ОС Windows 98SE/ME/2000/XP/Vista
+
+Комплект поставки:
+
+- Плеер RoverMedia Aria C35
+- Стереонаушники
+- Кабель USB
+- AAA батарея
+- Руководство пользователя</description>
+<rating>5</rating>
+<reviews_num>2</reviews_num>
+<inet_price>590</inet_price>
+<old_price>590</old_price>
+<price>590</price>
+<card_discount>1</card_discount>
+<pickup>0</pickup>
+<delivery>0</delivery>
+<image width="180" height="180">http://www.mvideo.ru/Pdb/30012771.jpg</image>
+</product>
+<product>
+<product_id>30012317</product_id>
+<title>Портативный медиаплеер iRiver T8 4Gb Red</title>
+<description>
+</description>
+<rating>4.2</rating>
+<reviews_num>5</reviews_num>
+<inet_price>590</inet_price>
+<old_price>590</old_price>
+<price>590</price>
+<card_discount>1</card_discount>
+<pickup>0</pickup>
+<delivery>0</delivery>
+<image width="180" height="180">http://www.mvideo.ru/Pdb/30012317.jpg</image>
+</product>
+<product>
+<product_id>30011839</product_id>
+<title>Портативный медиаплеер Ritmix RF-7900 8Gb Black</title>
+<description>MP3 плеер с большим дисплеем и встроенной фотокамерой. Удобен для чтения электронных книг, просмотра фотографий а также видео формата 3:4 без необходимости предварительно переконвертировать его. Плеер оснащён также диктофоном высокого качества и FM-тюнером. RF-7900 поддерживает множество форматов мультимедиа, включая loseless форматы аудио, позволяющие кодировать музыку без потери качества.</description>
+<rating>3.8</rating>
+<reviews_num>4</reviews_num>
+<inet_price>690</inet_price>
+<old_price>1290</old_price>
+<price>690</price>
+<card_discount>1</card_discount>
+<pickup>0</pickup>
+<delivery>0</delivery>
+<image width="180" height="180">http://www.mvideo.ru/Pdb/30011839.jpg</image>
+</product>
+<product>
+<product_id>30013156</product_id>
+<title>Портативный медиаплеер Ritmix RF-3310 2Gb</title>
+<description>Ritmix RF-3310 – это усовершенствованная версия плеера RF-3300 с новым аккумулятором увеличенной ёмкости. В ней добавлена поддержка дополнительных форматов аудио, в т.ч. loseless-форматов. Устройство оснащено слотом для карт памяти Micro SD ёмкостью до 16 Гб.
+
+RF-3310 представляет собой бюджетный mp3-плеер со встроенными диктофоном и радио. Он выполнен в эргономичном прорезиненном корпусе и имеет удобную систему управления. Главной особенностью RF-3310 является выдвижной USB-коннектор, позволяющий копировать музыку на плеер без USB-кабеля.</description>
+<rating>3.4</rating>
+<reviews_num>5</reviews_num>
+<inet_price>690</inet_price>
+<old_price>690</old_price>
+<price>690</price>
+<card_discount>1</card_discount>
+<pickup>0</pickup>
+<delivery>0</delivery>
+<image width="180" height="180">http://www.mvideo.ru/Pdb/30013156.jpg</image>
+</product>
+<product>
+<product_id>30011169</product_id>
+<title>Портативный медиаплеер Rover Media C20R 2Gb Black</title>
+<description>
+</description>
+<rating>3.7</rating>
+<reviews_num>20</reviews_num>
+<inet_price>790</inet_price>
+<old_price>790</old_price>
+<price>790</price>
+<card_discount>1</card_discount>
+<pickup>0</pickup>
+<delivery>0</delivery>
+<image width="180" height="180">http://www.mvideo.ru/Pdb/30011169.jpg</image>
+</product>
+<product>
+<product_id>30013814</product_id>
+<title>Портативный медиаплеер Explay X2 4Gb Black/Silver</title>
+<description>Сверхкомпактный и легкий!
+
+- Корпус без дисплея
+- Встроенная память объемом 4 Гб
+- Длительное время работы от батареи
+- Крупные фигурные клавиши — интуитивное управление в любых условиях</description>
+<rating>0.0</rating>
+<reviews_num>0</reviews_num>
+<inet_price>790</inet_price>
+<old_price>790</old_price>
+<price>790</price>
+<card_discount>1</card_discount>
+<pickup>0</pickup>
+<delivery>0</delivery>
+<image width="180" height="180">http://www.mvideo.ru/Pdb/30013814.jpg</image>
+</product>
+<product>
+<product_id>30013550</product_id>
+<title>Портативный медиаплеер teXet T-249 4Gb Black</title>
+<description>Плееры серии T-249 – это многофункциональные плееры, которые не только воспроизводят музыкальные файлы  (MP3, WMA, WAV, APE, AAC, M4A), но еще и принимают радио и записывают звук со встроенного микрофона.
+
+Новая модель по размерам и удобству использования не уступает обычным USB-накопителям, а интегрированный  USB-штекер, с поддержкой стандарта передачи данных USB 2.0, позволяет отказаться от использования  дополнительных кабелей и драйверов при переносе информации с компьютера на компьютер.
+
+В качестве элемента питания в T-249 используется батарея ААА, которая может быть заменена на аккумулятор такого же типа.</description>
+<rating>0.0</rating>
+<reviews_num>0</reviews_num>
+<inet_price>890</inet_price>
+<old_price>890</old_price>
+<price>890</price>
+<card_discount>1</card_discount>
+<pickup>0</pickup>
+<delivery>0</delivery>
+<image width="180" height="180">http://www.mvideo.ru/Pdb/30013550.jpg</image>
+</product>
+<product>
+<product_id>30011475</product_id>
+<title>Портативный медиаплеер Ritmix RF-4300 4Gb Black</title>
+<description>Миниатюрный mp3-плеер с эргономичным корпусом, нижняя плоскость которого имеет края округлой формы. Такой дизайн позволяет плееру удобно ложиться в ладонь и свободно выниматься из кармана. Кроме того RF-4300 оснащён т.н. динамической системой управления, которая сочетает в себе плюсы как сенсорного, так и кнопочного управления.
+Ritmix RF-4300 оснащён диктофоном и радио, имеется встроенная игра «Тетрис», поддерживаются все виды мультимедиа. Несмотря на тонкий корпус плеер оснащён разъёмом мини USB и слотом для карт памяти Мicro SD.
+
+</description>
+<rating>2.8</rating>
+<reviews_num>21</reviews_num>
+<inet_price>890</inet_price>
+<old_price>890</old_price>
+<price>890</price>
+<card_discount>1</card_discount>
+<pickup>0</pickup>
+<delivery>0</delivery>
+<image width="180" height="180">http://www.mvideo.ru/Pdb/30011475.jpg</image>
+</product>
+<product>
+<product_id>30012380</product_id>
+<title>Портативный медиаплеер Archos 24VB 4Gb Black</title>
+<description>
+</description>
+<rating>5</rating>
+<reviews_num>1</reviews_num>
+<inet_price>990</inet_price>
+<old_price>990</old_price>
+<price>990</price>
+<card_discount>1</card_discount>
+<pickup>0</pickup>
+<delivery>0</delivery>
+<image width="180" height="180">http://www.mvideo.ru/Pdb/30012380.jpg</image>
+</product>
+мото ямаха
+<product>
+<product_id>30010873</product_id>
+<title>Портативный медиаплеер Samsung YP-U5QR 2Gb Red</title>
+<description>Функциональность, дизайн и прямое подключение к компьютеру через USB-штекер — это все о новом плеере Samsung U5. Кроме прослушивания музыки YP-U5 может использоваться во время тренировок: он позволяет ставить таймер, подсчитает израсходованные калории и даст своевременные рекомендации.</description>

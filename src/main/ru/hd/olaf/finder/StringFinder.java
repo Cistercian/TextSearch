@@ -1,6 +1,6 @@
-package ru.hd.olaf.main.finder;
+package main.ru.hd.olaf.finder;
 
-import ru.hd.olaf.main.finder.Strategy.Strategy;
+import main.ru.hd.olaf.finder.Strategy.Strategy;
 
 /**
  * Created by d.v.hozyashev on 10.08.2017.

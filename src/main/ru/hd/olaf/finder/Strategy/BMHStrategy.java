@@ -1,4 +1,4 @@
-package ru.hd.olaf.main.finder.Strategy;
+package main.ru.hd.olaf.finder.Strategy;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +12,9 @@ public class BMHStrategy implements Strategy {
 
     @Override
     public boolean isContain(String text, String pattern) {
+        if (text == null || pattern == null)
+            throw new IllegalArgumentException();
+
         int textLen = text.length();
         int patternLen = pattern.length();
 
