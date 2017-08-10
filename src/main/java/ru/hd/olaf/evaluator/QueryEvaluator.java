@@ -30,7 +30,7 @@ public class QueryEvaluator {
         //Выходная очередь с булевыми результатами расчета (частные результаты поиска по отдельно взятым словам условия
         //с последующим схлапыванием их в результирующее значение)
         Deque<Boolean> values = new ArrayDeque<>();
-        //стек с логическими операторами (NOT, AND, OR) + служебные символы '(', ')'
+        //очередь с логическими операторами (NOT, AND, OR) + служебные символы '(', ')'
         Deque<OperatorType> operators = new ArrayDeque<>();
 
         //форматируем передаваемую строку - при необходимости вставляем пробелы между скобками и словами/операторами
@@ -46,7 +46,7 @@ public class QueryEvaluator {
                 values.push(finder.isTextFound(text, word));
 
                 //в том случае, если перед этим уже было искомое слово
-                //добавляем в стек операций операцию по-умолчанию AND
+                //добавляем в очередь операций операцию по-умолчанию AND
                 if (isNextWordIsOperator) {
                     operators.push(OperatorType.AND);
                 }
@@ -58,16 +58,16 @@ public class QueryEvaluator {
 
                 //случай с использованием скобок
                 if (operator == OperatorType.OPEN_BRACKET) {
-                    //перед открывающейся скобкой должна быть операция. Иначе - добавляем в стек AND
+                    //перед открывающейся скобкой должна быть операция. Иначе - добавляем в очередь AND
                     if (isNextWordIsOperator) {
                         operators.push(OperatorType.AND);
                         isNextWordIsOperator = false;
                     }
-                    //сохраняем скобку в стек и переходим к считыванию следующего слова
+                    //сохраняем скобку в очередь и переходим к считыванию следующего слова
                     operators.push(operator);
                     continue;
                 } else if (operator == OperatorType.CLOSE_BRACKET) {
-                    //считали закрывающуюся скобку - необходимо выполнить все имеющиеся операции в стеке
+                    //считали закрывающуюся скобку - необходимо выполнить все имеющиеся операции в очереди
                     //до открывающейся скобки
                     try {
                         while (operators.peek() != OperatorType.OPEN_BRACKET) {
@@ -76,7 +76,7 @@ public class QueryEvaluator {
                     } catch (NoSuchElementException e) {
                         throw new IllegalArgumentException("Логическая ошибка парсинга условия - не найдена открывающая скобка");
                     }
-                    //убираем из стека открывающуюся скобку и переходим к следующему слову
+                    //убираем из очереди открывающуюся скобку и переходим к следующему слову
                     operators.pop();
                     continue;
                 }
@@ -86,18 +86,18 @@ public class QueryEvaluator {
                 if (isNextWordIsOperator && operator == OperatorType.NOT)
                     operators.push(OperatorType.AND);
 
-                //если приоритет текущего оператора меньше или равен тому, что уже лежит в стеке
-                //то необходимо сначала вычислить операцию из стека (условие алгоритма ОПН)
+                //если приоритет текущего оператора меньше или равен тому, что уже лежит в очереди
+                //то необходимо сначала вычислить операцию из очереди (условие алгоритма ОПН)
                 if (operators.size() > 0 && operator.ordinal() <= operators.peek().ordinal()) {
                     evaluate(values, operators.pop());
                 }
-                //сохраняем в стек текущую операцию
+                //сохраняем текущую операцию
                 operators.push(operator);
                 isNextWordIsOperator = false;
             }
         }
 
-        //обрабатываем весь стек операторов
+        //обрабатываем всю оставшуюся очередь операторов
         while (!operators.isEmpty()) {
             evaluate(values, operators.pop());
         }
@@ -125,9 +125,9 @@ public class QueryEvaluator {
     }
 
     /**
-     * Функция осуществляет проверку выполнения переданного условия по имеющимся в стеке операндам
+     * Функция осуществляет проверку выполнения переданного условия по имеющимся в очереди операндам
      *
-     * @param values   стек с операндами (результаты поиска слов в тексте)
+     * @param values   очередь с операндами (результаты поиска слов в тексте)
      * @param operator текущая проверяемая операция (NOT/AND/OR)
      */
     private static void evaluate(Deque<Boolean> values, OperatorType operator) {
@@ -140,7 +140,7 @@ public class QueryEvaluator {
             //Операция исключения - считываем только последний операнд и инвертируем его
             result = !values.pop();
         } else {
-            //логическая операция AND или OR - сравниваем 2 последних результата в стеке
+            //логическая операция AND или OR - сравниваем 2 последних результата в очереди
             try {
                 boolean valueLast = values.pop();
                 boolean valuePrevious = values.pop();
