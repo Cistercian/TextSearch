@@ -16,6 +16,8 @@ import java.util.List;
 
 /**
  * Created by Olaf on 10.08.2017.
+ *
+ * Пытаемся увидеть разницу в скорости поиска используемых алгоритмов
  */
 public class StrategyTest extends Assert {
 
@@ -31,9 +33,8 @@ public class StrategyTest extends Assert {
         try {
             if (file.isFile()) {
                 List<String> lines = Files.readAllLines(file.toPath(), Charset.forName("UTF-8"));
-                for (String line : lines) {
-                    FILE_CONTENT.append(line);
-                }
+                lines.stream().forEach(FILE_CONTENT::append);
+
                 //аккуратней с OutOfMemory!
                 for (int i = 0; i < 10; i++) {
                     FILE_CONTENT.append(FILE_CONTENT.toString());
@@ -47,13 +48,11 @@ public class StrategyTest extends Assert {
 
     @Test
     public void testBMHStrategy() {
-        System.out.println("bmh " + FILE_CONTENT.toString().length());
-        assertTrue(QueryEvaluator.executeQuery(FILE_CONTENT.toString(), QUERY, BMH_FINDER));
+        assertTrue(QueryEvaluator.executeQuery(FILE_CONTENT.toString(), QUERY, PRIMITIVE_FINDER));
     }
 
     @Test
     public void testPrimitiveStrategy() {
-        System.out.println("primitive " + FILE_CONTENT.toString().length());
         assertTrue(QueryEvaluator.executeQuery(FILE_CONTENT.toString(), QUERY, PRIMITIVE_FINDER));
     }
 

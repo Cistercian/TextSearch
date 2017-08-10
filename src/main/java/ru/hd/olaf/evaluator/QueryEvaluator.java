@@ -39,9 +39,8 @@ public class QueryEvaluator {
         //по словам парсим исходную строку query
         String[] expressions = query.split(" ");
         boolean isNextWordIsOperator = false;
-        for (int i = 0; i < expressions.length; i++) {
 
-            String word = expressions[i];
+        for (String word : expressions) {
             if (isValue(word)) {
                 //считали слово, которое следует найти в тексте. Результат поиска кладем в очередь с результатами
                 values.push(finder.isTextFound(text, word));
@@ -117,13 +116,12 @@ public class QueryEvaluator {
      */
     private static String reformatQuery(String query) {
 
-        String reformattedQuery = query
+        return query
                 .replaceAll("(?<=\\S)(?=\\()", " ")
                 .replaceAll("(?<=\\S)(?=\\))", " ")
                 .replaceAll("(?<=\\()(?=\\S)", " ")
                 .replaceAll("(?<=\\))(?=\\S)", " ");
 
-        return reformattedQuery;
     }
 
     /**

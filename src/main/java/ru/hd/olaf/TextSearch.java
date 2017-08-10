@@ -30,7 +30,7 @@ public class TextSearch {
             System.out.println("Возникла ошибка: " + e.getMessage());
         }
 
-        //read long text from file
+        //читаем строку из файла
         try {
             text = getFileContent("src_file.txt");
 
@@ -44,17 +44,21 @@ public class TextSearch {
 
     private static String getFileContent(String fileName) throws IOException {
         ClassLoader classLoader = TextSearch.class.getClassLoader();
-        File file = new File(classLoader.getResource(fileName).getFile());
+        try {
+            File file = new File(classLoader.getResource(fileName).getFile());
 
-        if (file.isFile()) {
-            List<String> lines = Files.readAllLines(file.toPath(), Charset.forName("UTF-8"));
-            StringBuilder fileContent = new StringBuilder();
-            for (String line : lines) {
-                fileContent.append(line);
-            }
-            return fileContent.toString();
-        } else
+            if (file.isFile()) {
+                List<String> lines = Files.readAllLines(file.toPath(), Charset.forName("UTF-8"));
+                StringBuilder fileContent = new StringBuilder();
+
+                lines.stream().forEach(fileContent::append);
+
+                return fileContent.toString();
+            } else
+                throw new FileNotFoundException();
+        } catch (NullPointerException e) {
             throw new FileNotFoundException();
+        }
     }
 
 }
