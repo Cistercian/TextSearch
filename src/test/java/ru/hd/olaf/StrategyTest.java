@@ -18,6 +18,7 @@ import java.util.List;
  * Created by Olaf on 10.08.2017.
  * <p>
  * Пытаемся увидеть разницу в скорости поиска используемых алгоритмов
+ * в classpath'e должна быть доступна папка test/resources
  */
 public class StrategyTest extends Assert {
 

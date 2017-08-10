@@ -9,6 +9,8 @@ import org.junit.Test;
 
 /**
  * Created by d.v.hozyashev on 10.08.2017.
+ *
+ * Главный файл с тесткейсами, показывающий логику работы приложения.
  */
 public class TextSearchTest extends Assert {
 
