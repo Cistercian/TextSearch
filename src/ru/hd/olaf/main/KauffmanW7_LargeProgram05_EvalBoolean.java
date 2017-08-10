@@ -1,4 +1,4 @@
-package ru.hd.olaf;
+package ru.hd.olaf.main;
 
 import java.util.Stack;
 import java.util.Scanner;
