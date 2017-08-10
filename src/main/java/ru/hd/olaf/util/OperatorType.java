@@ -2,7 +2,7 @@ package main.java.ru.hd.olaf.util;
 
 /**
  * Created by d.v.hozyashev on 10.08.2017.
- *
+ * <p>
  * Типы допустимых логических операций.
  * Их порядок важен для определения приоритета операции (используется ordinal())
  */
@@ -19,7 +19,7 @@ public enum OperatorType {
      * @param operation Стороковое представление оператора
      * @return true при парсинге оператора, иначе - false
      */
-    public static OperatorType getOperator(String operation){
+    public static OperatorType getOperator(String operation) {
         if (operation == null || operation.length() == 0)
             throw new IllegalArgumentException();
 

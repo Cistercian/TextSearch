@@ -82,7 +82,7 @@ public class QueryEvaluator {
                 }
 
                 //если считали операцию NOT, перед которой не было логического условия AND или OR
-                //добавляем его по-умолчанию
+                //добавляем по-умолчанию AND
                 if (isNextWordIsOperator && operator == OperatorType.NOT)
                     operators.push(OperatorType.AND);
 

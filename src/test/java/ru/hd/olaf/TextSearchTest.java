@@ -17,7 +17,7 @@ public class TextSearchTest extends Assert {
 
     private static String query;
 
-    public void testCondition1(StringFinder finder) {
+    private void testCondition1(StringFinder finder) {
         query = "авто AND (ВАЗ OR ГАЗ)";
 
         assertTrue(QueryEvaluator.executeQuery("автомобиль ВАЗ-2101", query, finder));
@@ -25,14 +25,14 @@ public class TextSearchTest extends Assert {
         assertFalse(QueryEvaluator.executeQuery("автомобиль УАЗ", query, finder));
     }
 
-    public void testCondition2(StringFinder finder) {
+    private void testCondition2(StringFinder finder) {
         query = "мото ямаха NOT урал";
 
         assertTrue(QueryEvaluator.executeQuery("мотоцикл ямаха 2013 г.в.", query, finder));
         assertFalse(QueryEvaluator.executeQuery("мотоцикл ямаха с прицепом урал", query, finder));
     }
 
-    public void testCondition3(StringFinder finder) {
+    private void testCondition3(StringFinder finder) {
         query = "мото AND ямаха OR урал";
 
         assertTrue(QueryEvaluator.executeQuery("мотоцикл ямаха 2013 г.в.", query, finder));
@@ -42,7 +42,7 @@ public class TextSearchTest extends Assert {
     }
 
     @Test
-    public void testNativeStrategy() {
+    public void testPrimitiveStrategy() {
         testCondition1(PRIMITIVE_FINDER);
         testCondition2(PRIMITIVE_FINDER);
         testCondition3(PRIMITIVE_FINDER);

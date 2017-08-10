@@ -20,8 +20,8 @@ public class TextSearch {
 
         StringFinder finder = new StringFinder(new BMHStrategy());
 
-        String text = "автомобиль УАЗ-2101 полуямаха";
-        String query = "ямаха OR урал AND фиат";
+        String text = "мотоцикл ямаха с прицепом урал";
+        String query = "мото AND (ямаха NOT урал OR с (NOT л)) (ям NOT ом) OR ямаха1 OR NOT при1";
 
         try {
             boolean result = QueryEvaluator.executeQuery(text, query, finder);
@@ -55,9 +55,9 @@ public class TextSearch {
 
                 return fileContent.toString();
             } else
-                throw new FileNotFoundException();
+                throw new FileNotFoundException("Ошибка при открытии файла");
         } catch (NullPointerException e) {
-            throw new FileNotFoundException();
+            throw new FileNotFoundException("Файл не найден");
         }
     }
 

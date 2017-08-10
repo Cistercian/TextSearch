@@ -16,14 +16,15 @@ import java.util.List;
 
 /**
  * Created by Olaf on 10.08.2017.
- *
+ * <p>
  * Пытаемся увидеть разницу в скорости поиска используемых алгоритмов
  */
 public class StrategyTest extends Assert {
 
     private static final StringFinder PRIMITIVE_FINDER = new StringFinder(new PrimitiveStrategy());
     private static final StringFinder BMH_FINDER = new StringFinder(new BMHStrategy());
-    private static final StringBuilder FILE_CONTENT = new StringBuilder();
+
+    private static String FILE_CONTENT;
     private static final String QUERY = "Compliments";
 
     @BeforeClass
@@ -31,15 +32,18 @@ public class StrategyTest extends Assert {
         ClassLoader classLoader = TextSearchTest.class.getClassLoader();
         File file = new File(classLoader.getResource("file.txt").getFile());
         try {
+            StringBuilder fileContent = new StringBuilder();
             if (file.isFile()) {
                 List<String> lines = Files.readAllLines(file.toPath(), Charset.forName("UTF-8"));
-                lines.stream().forEach(FILE_CONTENT::append);
+                lines.stream().forEach(fileContent::append);
 
                 //аккуратней с OutOfMemory!
                 for (int i = 0; i < 10; i++) {
-                    FILE_CONTENT.append(FILE_CONTENT.toString());
+                    fileContent.append(fileContent.toString());
                 }
-                FILE_CONTENT.append(QUERY);
+                fileContent.append(QUERY);
+
+                FILE_CONTENT = fileContent.toString();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -48,12 +52,12 @@ public class StrategyTest extends Assert {
 
     @Test
     public void testBMHStrategy() {
-        assertTrue(QueryEvaluator.executeQuery(FILE_CONTENT.toString(), QUERY, PRIMITIVE_FINDER));
+        assertTrue(QueryEvaluator.executeQuery(FILE_CONTENT, QUERY, BMH_FINDER));
     }
 
     @Test
     public void testPrimitiveStrategy() {
-        assertTrue(QueryEvaluator.executeQuery(FILE_CONTENT.toString(), QUERY, PRIMITIVE_FINDER));
+        assertTrue(QueryEvaluator.executeQuery(FILE_CONTENT, QUERY, PRIMITIVE_FINDER));
     }
 
 }

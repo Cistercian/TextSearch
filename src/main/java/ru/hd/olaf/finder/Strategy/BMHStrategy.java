@@ -1,8 +1,5 @@
 package main.java.ru.hd.olaf.finder.Strategy;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by d.v.hozyashev on 10.08.2017.
  * <p>
@@ -22,21 +19,21 @@ public class BMHStrategy implements Strategy {
             throw new IllegalArgumentException("Переданы некорректные параметры");
 
         //заполняем таблицу сдвига
-        Map<Character, Integer> offsets = new HashMap<>();
-        for (int i = 0; i < patternLen - 1; i++){
-            offsets.put(pattern.charAt(i), patternLen - i - 1);
+//        Map<Character, Integer> offsets = new HashMap<>();
+//        for (int i = 0; i < patternLen - 1; i++){
+//            offsets.put(pattern.charAt(i), patternLen - i - 1);
+//        }
+        int[] offsets = new int[Character.MAX_VALUE];
+        for (int i = 0; i < Character.MAX_VALUE; i++) {
+            offsets[i] = patternLen;
         }
-//        int[] offsets = new int[Character.MAX_VALUE];
-//        for (int i = 0; i < Character.MAX_VALUE; i++) {
-//            offsets[i] = patternLen - 1;
-//        }
-//        for (int i = 0; i < patternLen - 1; i++) {
-//            offsets[pattern.charAt(i)] = patternLen - i - 1;
-//        }
+        for (char i = 0; i < patternLen - 1; i++) {
+            offsets[pattern.charAt(i)] = patternLen - i - 1;
+        }
 
         int offsetPosition = patternLen - 1;            //позиция в исходной строке, до которой передвигаем последний символ pattern
-        int matchedPatternPosition = offsetPosition;    //позиция в искомом слове, до которого символы совпадают
-        int matchedTextPosition = offsetPosition;       //текущая позиция в исходной строке, которую сравниваем
+        int matchedPatternPosition = offsetPosition;    //позиция в искомом слове, проверяемый на текущей итерации
+        int matchedTextPosition;                        //текущая позиция в исходной строке для сравнения
 
         //ищем до тех пор, пока не найдем полного совпадению, или не дойдем offsetPosition'ом до конца строки
         while (matchedPatternPosition >= 0 && offsetPosition <= textLen - 1) {
@@ -53,11 +50,11 @@ public class BMHStrategy implements Strategy {
             }
 
             //сдвигаем позицию подстановки искомого слова на позицию по таблице сдвига
-            offsetPosition += offsets.containsKey(text.charAt(offsetPosition)) ?
-                    offsets.get(text.charAt(offsetPosition)) :
-                    patternLen;
-//            if (matchedTextPosition > 0)
-//                offsetPosition += offsets[text.charAt(matchedTextPosition)];
+//            offsetPosition += offsets.containsKey(text.charAt(matchedTextPosition)) ?
+//                    offsets.get(text.charAt(matchedTextPosition)) :
+//                    patternLen;
+            if (matchedPatternPosition >= 0)
+                offsetPosition += offsets[text.charAt(matchedTextPosition)];
         }
 
         return matchedPatternPosition < 0;
