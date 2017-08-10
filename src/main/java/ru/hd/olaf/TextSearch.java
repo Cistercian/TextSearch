@@ -13,6 +13,9 @@ import java.util.List;
 
 /**
  * Created by d.v.hozyashev on 10.08.2017.
+ *
+ * Точка входа в приложение. Для наглядности приведен пример разбора простой строки и содержимого файла
+ * (не забудьте отметить папку resources доступной в classpath'e)
  */
 public class TextSearch {
 
