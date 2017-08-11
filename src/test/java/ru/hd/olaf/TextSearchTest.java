@@ -65,7 +65,7 @@ public class TextSearchTest extends Assert {
 
     @Test(expected = RuntimeException.class)
     public void testUnconditionalQuery2() {
-        query = "ямаха1 AND мото AND OR  1985";
+        query = "ямаха1 AND мото AND OR 1985";
         QueryEvaluator.executeQuery("автомобиль УАЗ", query, PRIMITIVE_FINDER);
     }
 
