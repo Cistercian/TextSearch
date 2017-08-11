@@ -116,7 +116,7 @@ public class TextSearchTest extends Assert {
     @Test(expected = IllegalArgumentException.class)
     public void testEmptyText() {
         query = "query";
-        QueryEvaluator.executeQuery("", query, BMH_FINDER);
+        QueryEvaluator.executeQuery("", query, PRIMITIVE_FINDER);
     }
 
     @Test
