@@ -31,32 +31,31 @@ public class BMHStrategy implements Strategy {
             offsets[pattern.charAt(i)] = patternLen - i - 1;
         }
 
-        int offsetPosition = patternLen - 1;            //позиция в исходной строке, до которой передвигаем последний символ pattern
-        int matchedPatternPosition = offsetPosition;    //позиция в искомом слове, проверяемый на текущей итерации
-        int matchedTextPosition;                        //текущая позиция в исходной строке для сравнения
+        int curOffset = patternLen - 1; //позиция в исходной строке, до которой передвигаем последний символ pattern
+        int curPattern = curOffset;     //позиция в искомом слове, проверяемый на текущей итерации
+        int curText;                    //текущая позиция в исходной строке для сравнения
 
-        //ищем до тех пор, пока не найдем полного совпадению, или не дойдем offsetPosition'ом до конца строки
-        while (matchedPatternPosition >= 0 && offsetPosition <= textLen - 1) {
+        //ищем до тех пор, пока не найдем полного совпадению, или не дойдем curOffset'ом до конца строки
+        while (curPattern >= 0 && curOffset <= textLen - 1) {
             //сбрасываем текущие позиции для новой итерации посимвольной сверки
-            matchedPatternPosition = patternLen - 1;
-            matchedTextPosition = offsetPosition;
+            curPattern = patternLen - 1;
+            curText = curOffset;
 
-            //сдвигаем позиции сверяемых символов влево до тех пор, пока либо не сверим все символы, либо не встретим
-            //расхождение символов
-            while (matchedPatternPosition >= 0 &&
-                    text.charAt(matchedTextPosition) == pattern.charAt(matchedPatternPosition)) {
-                matchedPatternPosition--;
-                matchedTextPosition--;
+            //сдвигаем позиции сверяемых символов справа налево до тех пор, пока либо не сверим все символы,
+            //либо не встретим расхождение символов
+            while (curPattern >= 0 && text.charAt(curText) == pattern.charAt(curPattern)) {
+                curPattern--;
+                curText--;
             }
 
             //сдвигаем позицию подстановки искомого слова на позицию по таблице сдвига
-//            offsetPosition += offsets.containsKey(text.charAt(matchedTextPosition)) ?
-//                    offsets.get(text.charAt(matchedTextPosition)) :
+//            curOffset += offsets.containsKey(text.charAt(curText)) ?
+//                    offsets.get(text.charAt(curText)) :
 //                    patternLen;
-            if (matchedPatternPosition >= 0)
-                offsetPosition += offsets[text.charAt(matchedTextPosition)];
+            if (curPattern >= 0)
+                curOffset += offsets[text.charAt(curText)];
         }
 
-        return matchedPatternPosition < 0;
+        return curPattern < 0;
     }
 }

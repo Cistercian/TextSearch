@@ -4,6 +4,8 @@ import main.java.ru.hd.olaf.finder.Strategy.Strategy;
 
 /**
  * Created by d.v.hozyashev on 10.08.2017.
+ * <p>
+ * Класс, реализующий обращение к конкретному алгоритму поиска в тексте
  */
 public class TextFinder {
     private Strategy strategy;

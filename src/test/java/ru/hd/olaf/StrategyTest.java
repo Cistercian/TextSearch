@@ -31,17 +31,17 @@ public class StrategyTest extends Assert {
     @BeforeClass
     public static void getFileContent() {
         ClassLoader classLoader = TextSearchTest.class.getClassLoader();
-        File file = new File(classLoader.getResource("file.txt").getFile());
         try {
-            StringBuilder fileContent = new StringBuilder();
+            File file = new File(classLoader.getResource("file.txt").getFile());
             if (file.isFile()) {
                 List<String> lines = Files.readAllLines(file.toPath(), Charset.forName("UTF-8"));
+                StringBuilder fileContent = new StringBuilder();
                 lines.stream().forEach(fileContent::append);
 
                 //аккуратней с OutOfMemory!
-                for (int i = 0; i < 10; i++) {
-                    fileContent.append(fileContent.toString());
-                }
+//                for (int i = 0; i < 10; i++) {
+//                    fileContent.append(fileContent);
+//                }
                 fileContent.append(QUERY);
 
                 FILE_CONTENT = fileContent.toString();

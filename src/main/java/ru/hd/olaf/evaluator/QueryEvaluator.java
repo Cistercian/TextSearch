@@ -38,6 +38,7 @@ public class QueryEvaluator {
 
         //по словам парсим исходную строку query
         String[] expressions = query.split(" ");
+        //переменная-маркер для учета оператора по-умолчанию AND, который может быть пропущен в условии.
         boolean isNextWordIsOperator = false;
 
         for (String word : expressions) {
