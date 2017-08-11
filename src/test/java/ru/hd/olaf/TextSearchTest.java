@@ -58,14 +58,41 @@ public class TextSearchTest extends Assert {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testUnconditionalQuery() {
+    public void testUnconditionalQuery1() {
         query = "ямаха1) AND мото  1985";
+        QueryEvaluator.executeQuery("автомобиль УАЗ", query, PRIMITIVE_FINDER);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testUnconditionalQuery2() {
+        query = "ямаха1 AND мото AND OR  1985";
+        QueryEvaluator.executeQuery("автомобиль УАЗ", query, PRIMITIVE_FINDER);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testUnconditionalQuery3() {
+        query = "ямаха1 AND мото AND 1985 (NOT)";
         QueryEvaluator.executeQuery("автомобиль УАЗ", query, PRIMITIVE_FINDER);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testNullParameters() {
         QueryEvaluator.executeQuery(null, null, null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNullParameters1() {
+        QueryEvaluator.executeQuery(null, "query", PRIMITIVE_FINDER);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNullParameters2() {
+        QueryEvaluator.executeQuery("string", null, PRIMITIVE_FINDER);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNullParameters3() {
+        QueryEvaluator.executeQuery("string", "string", null);
     }
 
     @Test
