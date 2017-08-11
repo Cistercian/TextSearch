@@ -4,7 +4,7 @@ import junit.framework.Assert;
 import main.java.ru.hd.olaf.evaluator.QueryEvaluator;
 import main.java.ru.hd.olaf.finder.Strategy.BMHStrategy;
 import main.java.ru.hd.olaf.finder.Strategy.PrimitiveStrategy;
-import main.java.ru.hd.olaf.finder.StringFinder;
+import main.java.ru.hd.olaf.finder.TextFinder;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -22,8 +22,8 @@ import java.util.List;
  */
 public class StrategyTest extends Assert {
 
-    private static final StringFinder PRIMITIVE_FINDER = new StringFinder(new PrimitiveStrategy());
-    private static final StringFinder BMH_FINDER = new StringFinder(new BMHStrategy());
+    private static final TextFinder PRIMITIVE_FINDER = new TextFinder(new PrimitiveStrategy());
+    private static final TextFinder BMH_FINDER = new TextFinder(new BMHStrategy());
 
     private static String FILE_CONTENT;
     private static final String QUERY = "Compliments";

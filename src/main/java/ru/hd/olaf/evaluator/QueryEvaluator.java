@@ -1,6 +1,6 @@
 package main.java.ru.hd.olaf.evaluator;
 
-import main.java.ru.hd.olaf.finder.StringFinder;
+import main.java.ru.hd.olaf.finder.TextFinder;
 import main.java.ru.hd.olaf.util.OperatorType;
 
 import java.util.ArrayDeque;
@@ -23,7 +23,7 @@ public class QueryEvaluator {
      * @param finder Объект, реализующий алгоритм поиска совпадения в тексте
      * @return true при выполнении условия, false - иначе
      */
-    public static boolean executeQuery(String text, String query, StringFinder finder) {
+    public static boolean executeQuery(String text, String query, TextFinder finder) {
         if (text == null || query == null || finder == null)
             throw new IllegalArgumentException("Ошибка переданных параметров.");
 

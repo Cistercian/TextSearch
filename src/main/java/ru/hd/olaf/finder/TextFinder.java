@@ -5,10 +5,10 @@ import main.java.ru.hd.olaf.finder.Strategy.Strategy;
 /**
  * Created by d.v.hozyashev on 10.08.2017.
  */
-public class StringFinder {
+public class TextFinder {
     private Strategy strategy;
 
-    public StringFinder(Strategy strategy) {
+    public TextFinder(Strategy strategy) {
         this.strategy = strategy;
     }
 

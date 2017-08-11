@@ -4,7 +4,7 @@ import junit.framework.Assert;
 import main.java.ru.hd.olaf.evaluator.QueryEvaluator;
 import main.java.ru.hd.olaf.finder.Strategy.BMHStrategy;
 import main.java.ru.hd.olaf.finder.Strategy.PrimitiveStrategy;
-import main.java.ru.hd.olaf.finder.StringFinder;
+import main.java.ru.hd.olaf.finder.TextFinder;
 import org.junit.Test;
 
 /**
@@ -14,12 +14,12 @@ import org.junit.Test;
  */
 public class TextSearchTest extends Assert {
 
-    private static final StringFinder PRIMITIVE_FINDER = new StringFinder(new PrimitiveStrategy());
-    private static final StringFinder BMH_FINDER = new StringFinder(new BMHStrategy());
+    private static final TextFinder PRIMITIVE_FINDER = new TextFinder(new PrimitiveStrategy());
+    private static final TextFinder BMH_FINDER = new TextFinder(new BMHStrategy());
 
     private static String query;
 
-    private void testCondition1(StringFinder finder) {
+    private void testCondition1(TextFinder finder) {
         query = "авто AND (ВАЗ OR ГАЗ)";
 
         assertTrue(QueryEvaluator.executeQuery("автомобиль ВАЗ-2101", query, finder));
@@ -27,14 +27,14 @@ public class TextSearchTest extends Assert {
         assertFalse(QueryEvaluator.executeQuery("автомобиль УАЗ", query, finder));
     }
 
-    private void testCondition2(StringFinder finder) {
+    private void testCondition2(TextFinder finder) {
         query = "мото ямаха NOT урал";
 
         assertTrue(QueryEvaluator.executeQuery("мотоцикл ямаха 2013 г.в.", query, finder));
         assertFalse(QueryEvaluator.executeQuery("мотоцикл ямаха с прицепом урал", query, finder));
     }
 
-    private void testCondition3(StringFinder finder) {
+    private void testCondition3(TextFinder finder) {
         query = "мото AND ямаха OR урал";
 
         assertTrue(QueryEvaluator.executeQuery("мотоцикл ямаха 2013 г.в.", query, finder));

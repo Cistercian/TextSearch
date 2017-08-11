@@ -2,7 +2,7 @@ package main.java.ru.hd.olaf;
 
 import main.java.ru.hd.olaf.evaluator.QueryEvaluator;
 import main.java.ru.hd.olaf.finder.Strategy.BMHStrategy;
-import main.java.ru.hd.olaf.finder.StringFinder;
+import main.java.ru.hd.olaf.finder.TextFinder;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,7 +21,7 @@ public class TextSearch {
 
     public static void main(String[] args) {
 
-        StringFinder finder = new StringFinder(new BMHStrategy());
+        TextFinder finder = new TextFinder(new BMHStrategy());
 
         String text = "мотоцикл ямаха с прицепом урал";
         String query = "мото AND (ямаха NOT урал OR с (NOT л)) (ям NOT ом) OR ямаха1 OR NOT при1";
